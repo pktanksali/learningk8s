@@ -1,0 +1,42 @@
+#!/bin/bash
+
+echo "Install Docker Engine Community edition for Ubuntu";
+echo "--------------------------------------------------";
+echo "Set up the repository:-";
+echo "1. Update the apt package index:";
+echo "apt-get update";
+apt-get update;
+echo;
+echo "2. Install packages to allow apt to use a repository over HTTPS:";
+echo "apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common";
+apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common;
+echo;
+echo "3. Add Docker’s official GPG key:";
+echo "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -";
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -;
+echo;
+echo "Verify that you now have the key with the fingerprint:";
+echo "apt-key fingerprint 0EBFCD88";
+apt-key fingerprint 0EBFCD88;
+echo;
+echo "4. Set up the stable repository:";
+echo "add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\"";
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable";
+echo;
+echo "-----------------------------------------------------------------------------------------------------------";
+echo "Install Docker Engine - Community:-";
+echo "1. Update the apt package index:";
+echo "apt-get update";
+apt-get update;
+echo;
+echo "2. Install the latest version of Docker Engine - Community and containerd:";
+echo "apt-get install docker docker-compose";
+apt-get install docker docker-compose;
+echo;
+sleep 10;
+echo "3. Verify that Docker Engine - Community is installed correctly by running the hello-world image:";
+echo "docker run hello-world";
+docker run hello-world;
+echo;
+echo "=================== Docker Installation Completed ==================";
+
