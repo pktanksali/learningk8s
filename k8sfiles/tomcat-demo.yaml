@@ -1,0 +1,26 @@
+apiVersion: apps/v1 # With the apiVersion field, we mention the API endpoint on the API server which we want to connect to.
+# With the kind field, we mention the object type - in our case, we have Deployment.
+kind: Deployment
+# With the metadata field, we attach the basic information to objects, like the name. 
+metadata:
+  name: tomcat-demo
+  labels:
+    app: tomcat
+# With spec, we define the desired state of the deployment. In our example, we want to make sure that, at any point in time, at least 2 Pods are running, which are created using the Pods Template defined in spec.template.
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - name: tomcat-demo
+        image: prasadk8stest.azurecr.io/staticweb:latest 
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: acr-auth
