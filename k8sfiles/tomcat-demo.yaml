@@ -16,11 +16,11 @@ spec:
     metadata:
       labels:
         app: tomcat
-    spec:
+    spec: # In spec.template.spec, Pod would be created using staticweb image.
       containers:
       - name: tomcat-demo
         image: prasadk8stest.azurecr.io/staticweb:latest 
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: acr-auth
+      - name: web-auth
